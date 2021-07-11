@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Weather Page
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid" style="background-image: url('https://wp.me/ac14yf-20b'); height: 400px;">
+    <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-10">
+          <br><br><br><br><br>
+            <div class="container-fluid">
+              <i class="fa fa-search"></i> 
+              <input style="height: 60px; width: 900px;" type="text" class="form-control" placeholder="Search Location">
+              <br><br>
+              <button class="btn btn-dark">
+                <a href="#">Search</a>
+              </button> 
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
