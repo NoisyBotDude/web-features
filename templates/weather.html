@@ -11,12 +11,15 @@
         <div class="col-md-10">
           <br><br><br><br><br>
             <div class="container-fluid">
-              <i class="fa fa-search"></i> 
-              <input style="height: 60px; width: 900px;" type="text" class="form-control" placeholder="Search Location">
+              <i class="fa fa-search"></i>
+              <form action="" method="POST">
+              <input style="height: 60px; width: 900px;" type="text" name="city" class="form-control" placeholder="Search Location">
               <br><br>
               <button class="btn btn-dark">
-                <a href="#">Search</a>
+                <input type="submit" value="Search">
+                <!--<a href="{{ url_for('weather_update')}}">Search</a>-->
               </button> 
+              </form>
             </div>
         </div>
     </div>
@@ -33,7 +36,7 @@
                     <h6>16:08</h6>
                 </div>
                 <div class="d-flex flex-column temp mt-5 mb-3">
-                    <h1 class="mb-0 font-weight-bold" id="heading"> {{ current_temperature[city] }} </h1> <span class="small grey">{{ status[city] }}</span>
+                    <h1 class="mb-0 font-weight-bold" id="heading"> {{ current_temperature[city] }}&#176; </h1> <span class="small grey">{{ status[city] }}</span>
                 </div>
                 <div class="d-flex">
                     <div class="temp-details flex-grow-1">
