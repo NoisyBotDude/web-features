@@ -7,6 +7,7 @@ current_temperature = []
 status = []
 wind = []
 humidity = []
+feels_like = []
 
 for city in range(len(cities)):
         complete_url = f"{base_url}appid={api_key}&q={cities[city]}"
@@ -19,9 +20,11 @@ for city in range(len(cities)):
 
         current_tempcels = int(main['temp'] - 273.15)
         humidity_status = main['humidity']
+        feels_like_status = int(main['feels_like'] - 273.15)
 
         current_temperature.append(current_tempcels)
         status.append(weather_status)
         wind.append(wind_speed)
         humidity.append(humidity_status)
+        feels_like.append(feels_like_status)
 
