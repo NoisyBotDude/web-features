@@ -3,6 +3,13 @@ from flask import request
 import requests
 from weather_cards import cities, current_temperature, status
 from weather_cards import wind, humidity, feels_like
+from datetime import datetime
+
+now = datetime.now()
+current_time = now.strftime("%H:%M")
+today = datetime.today()
+current_date = today.strftime("%d-%b-%Y")
+current_day = datetime.today().strftime("%A")
 
 app = Flask(__name__)
 
@@ -23,11 +30,10 @@ def weather_page():
         return render_template('weather.html', cities=cities,
                         current_temperature=current_temperature,
                         status=status, wind=wind, humidity=humidity,
-                        feels_like=feels_like)
+                        feels_like=feels_like, current_time=current_time)
 
 @app.route('/weather-updates', methods=['GET', 'POST'])
 def weather_update():
-    if request.method == 'GET':
         api_key = "5d52a94d4dcb8a2a52599d68a443e1f7"
         base_url = "https://api.openweathermap.org/data/2.5/weather?"
 
@@ -44,13 +50,16 @@ def weather_update():
         feels_like_status = int(main['feels_like'] - 273.15)
         clouds = json_response['clouds']['all']
 
-        if main:
+        if request.method == 'GET':
             return render_template('weather_update.html', current_tempcels=current_tempcels,
                            wind_speed=wind_speed, clouds=clouds,
                            feels_like_status=feels_like_status,
                            humidity_status=humidity_status,
                            weather_status=weather_status,
-                           city=city.capitalize())
+                           city=city.capitalize(),
+                           current_time=current_time,
+                           current_date=current_date,
+                           current_day=current_day)
 
 if __name__ == '__main__':
     app.run(debug=True)
