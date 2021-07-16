@@ -1,27 +1,19 @@
 import requests
+from routes import city
 
-def city(cities):
-        api_key = "5d52a94d4dcb8a2a52599d68a443e1f7"
-        base_url = "https://api.openweathermap.org/data/2.5/weather?"
+api_key = "5d52a94d4dcb8a2a52599d68a443e1f7"
+base_url = "https://api.openweathermap.org/data/2.5/weather?"
 
-        complete_url = f"{base_url}appid={api_key}&q={cities}"
-        print(complete_url)
+complete_url = f"{base_url}appid={api_key}&q={city}"
+response = requests.get(complete_url)
+json_response = response.json()
 
-        response = requests.get(complete_url)
-        x  = response.json()
+main = json_response['main']
+weather_status = json_response['weather'][0]['main']
+wind_speed = int(json_response['wind']['speed'] * 1.85)
 
-        response_main = x['main']
-        response_weather = x['weather'][0]
+current_tempcels = int(main['temp'] - 273.15)
+humidity_status = main['humidity']
+feels_like_status = int(main['feels_like'] - 273.15)
+clouds = json_response['clouds']['all']
 
-        if response_main:
-                current_tempcels = int(response_main['temp'] - 273.15)
-                feels_like = int(response_main['feels_like'] - 273.15)
-                response_weather_main = response_weather['main']
-                print(f'Current temperature is {current_tempcels}'
-                      f'It feels like {feels_like}')
-                print(f'There is a chance of: {response_weather_main}')
-
-        else:
-                return f'Eroor getting temperature of {cities}'
-
-city("Guwahati")
