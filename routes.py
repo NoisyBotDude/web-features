@@ -34,24 +34,42 @@ def weather_page():
 
 @app.route('/weather-updates', methods=['GET', 'POST'])
 def weather_update():
-        api_key = "5d52a94d4dcb8a2a52599d68a443e1f7"
-        base_url = "https://api.openweathermap.org/data/2.5/weather?"
+    api_key = "5d52a94d4dcb8a2a52599d68a443e1f7"
+    base_url = "https://api.openweathermap.org/data/2.5/weather?"
 
+    if request.method == 'POST':
+        global location
+        location = request.form['location']
+        complete_url = f"{base_url}appid={api_key}&q={location}"
+
+    else:
         complete_url = f"{base_url}appid={api_key}&q={city}"
-        response = requests.get(complete_url)
-        json_response = response.json()
 
-        main = json_response['main']
-        weather_status = json_response['weather'][0]['main']
-        wind_speed = int(json_response['wind']['speed'] * 1.85)
+    response = requests.get(complete_url)
+    json_response = response.json()
 
-        current_tempcels = int(main['temp'] - 273.15)
-        humidity_status = main['humidity']
-        feels_like_status = int(main['feels_like'] - 273.15)
-        clouds = json_response['clouds']['all']
+    main = json_response['main']
+    weather_status = json_response['weather'][0]['main']
+    wind_speed = int(json_response['wind']['speed'] * 1.85)
 
-        if request.method == 'GET':
-            return render_template('weather_update.html', current_tempcels=current_tempcels,
+    current_tempcels = int(main['temp'] - 273.15)
+    humidity_status = main['humidity']
+    feels_like_status = int(main['feels_like'] - 273.15)
+    clouds = json_response['clouds']['all']
+
+    if request.method == 'POST':
+        return render_template('weather_update.html', current_tempcels=current_tempcels,
+                           wind_speed=wind_speed, clouds=clouds,
+                           feels_like_status=feels_like_status,
+                           humidity_status=humidity_status,
+                           weather_status=weather_status,
+                           city=location.capitalize(),
+                           current_time=current_time,
+                           current_date=current_date,
+                           current_day=current_day)
+
+    else:
+        return render_template('weather_update.html', current_tempcels=current_tempcels,
                            wind_speed=wind_speed, clouds=clouds,
                            feels_like_status=feels_like_status,
                            humidity_status=humidity_status,
