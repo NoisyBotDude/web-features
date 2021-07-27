@@ -11,6 +11,9 @@ today = datetime.today()
 current_date = today.strftime("%d-%b-%Y")
 current_day = datetime.today().strftime("%A")
 
+api_key = "5d52a94d4dcb8a2a52599d68a443e1f7"
+base_url = "https://api.openweathermap.org/data/2.5/weather?"
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -34,9 +37,6 @@ def weather_page():
 
 @app.route('/weather-updates', methods=['GET', 'POST'])
 def weather_update():
-    api_key = "5d52a94d4dcb8a2a52599d68a443e1f7"
-    base_url = "https://api.openweathermap.org/data/2.5/weather?"
-
     if request.method == 'POST':
         global location
         location = request.form['location']
@@ -51,6 +51,9 @@ def weather_update():
     main = json_response['main']
     weather_status = json_response['weather'][0]['main']
     wind_speed = int(json_response['wind']['speed'] * 1.85)
+
+    latitude = json_response['coord']['lat']
+    longitude = json_response['coord']['lon']
 
     current_tempcels = int(main['temp'] - 273.15)
     humidity_status = main['humidity']
