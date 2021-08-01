@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Page</title>
+    <script src="https://kit.fontawesome.com/433788771e.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: darkslategrey;
+            overflow-x: hidden;  
+                      
+        }
+
+        .search-bar {
+            /* background-image: url('https://wp.me/ac14yf-20b'); */
+            height: 400px;
+            width: 100%;
+        }
+
+        .form-control, .form-input, .form-submit {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            position: relative;
+            border-radius: 0.25rem;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0 auto;
+            color: #495057;
+            font-weight: 400;
+        }
+
+        .form-input {
+            top: 135px;
+            height: 50px;
+            width: 900px;
+            display: block;
+            background-color: white;
+            border: 1px solid #ced4da;
+            transition: border-color 0.15s ease-in-out;
+            overflow: visible;
+        }
+
+        .form-submit {
+            top: 180px;
+            left: 170px;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+            color: white;
+            background-color: #343a40;
+            border-color: #343a40;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .card1, .card2, .card3 {
+            position: relative;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            transition: 0.3s;
+            border-radius: 4px ;
+            width: 24%;
+            height: 320px;
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card1:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .card1 {
+            top: 50px;
+            left: 30px;
+        }
+
+        .card2 {
+            top: -290px;
+            left: 460px;
+        }
+
+        .card3 {
+            top: -625px;
+            left: 890px;
+        }
+
+        .header, .location, .time, .temp, .status, .more-info {
+            font-family:Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 400;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .header {
+            line-height: 24px;
+        }
+
+        .location {
+            text-align: left;
+        }
+
+        .time {
+            text-align: right;
+            top: -40px;
+        }
+
+        .temp {
+            font-size: 35px;
+            font-weight: 800;
+        }
+
+        .status {
+            font-size: 14px;
+            top: -22px;
+        }
+
+        .more-info {
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="search-bar">
+        <form class="form-control" action="" method="POST">
+            <input class="form-input" type="text" name="city" placeholder="Search Location">
+            <button class="form-submit"> Search </button>
+        </form>
+    </div>
+    <div class="card1">
+        <div class="container">
+            <div class="header"> 
+                <p class="location"> Guwahati </p>
+                <p class="time"> 20:50</p>
+            </div>
+            <div class="info">
+                <h1 class="temp"> 27&#176;</h1>
+                <span class="status">Mist </span>
+            </div>
+            <div class="more-info">
+                <p><span class="feels"> Feels like: 30&#176;</span></p>
+                <p><span><i class="fas fa-wind"></i> 2km/hr</span></p>
+                <p><span><i class="fas fa-tint"></i> 62%</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="card2">
+        <div class="container">
+            <div class="header"> 
+                <p class="location"> Guwahati </p>
+                <p class="time"> 20:50</p>
+            </div>
+            <div class="info">
+                <h1 class="temp"> 27&#176;</h1>
+                <span class="status">Mist </span>
+            </div>
+            <div class="more-info">
+                <p><span class="feels"> Feels like: 30&#176;</span></p>
+                <p><span><i class="fas fa-wind"></i> 2km/hr</span></p>
+                <p><span><i class="fas fa-tint"></i> 62%</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="card3">
+        <div class="container">
+            <div class="header">
+                <p class="location"> Guwahati </p>
+                <p class="time"> 20:50</p>
+            </div>
+            <div class="info">
+                <h1 class="temp"> 27&#176;</h1>
+                <span class="status">Mist </span>
+            </div>
+            <div class="more-info">
+                <p><span class="feels"> Feels like: 30&#176;</span></p>
+                <p><span><i class="fas fa-wind"></i> 2km/hr</span></p>
+                <p><span><i class="fas fa-tint"></i> 62%</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
