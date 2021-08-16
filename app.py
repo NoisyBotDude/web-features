@@ -1,17 +1,20 @@
 from flask import Flask, render_template, redirect, url_for
 from flask import request
+from flask import flash
 import requests
 from weather.weather_cards import cities, current_temperature, status
 from weather.weather_cards import wind, humidity, feels_like
 from datetime import datetime
+from youtube.youtube import Audio, PlayList, Video, Youtube
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = "4c89becdb81a33b40cdc6d5a"
 
 now = datetime.now()
 current_time = now.strftime("%H:%M")
 today = datetime.today()
 current_date = today.strftime("%d-%b-%Y")
 current_day = datetime.today().strftime("%A")
-
-app = Flask(__name__)
 
 @app.route('/')
 @app.route('/home')
@@ -79,9 +82,41 @@ def weather_update():
                            current_date=current_date,
                            current_day=current_day)
 
-@app.route('/youtube')
+@app.route('/youtube', methods=['GET', 'POST'])
 def youtubeDownload():
-    return render_template("youtube/home.html")
+    if request.method == "POST":
+        video_url = request.form.get('video_url')
+        playlist_url = request.form.get('playlist_url')
+        youtube = Youtube(video_url)
+
+        if video_url:
+            if request.form.get("video_download"):
+                video = Video(youtube.url)
+                video.downloadVideo()
+                flash("Video successfully downloaded")
+                return redirect(url_for('youtubeDownload'))
+
+            elif request.form.get("audio_download"):
+                audio = Audio(youtube.url)
+                audio.downloadAudio()
+                flash("Audio successfully downloaded")
+                return redirect(url_for('youtubeDownload'))
+
+            else:
+                return render_template("youtube/home.html")
+
+        elif not playlist_url == "":
+            youtube = Youtube(playlist_url)
+            playlist = PlayList(youtube.url)
+            playlist.downloadPlaylist()
+            flash("Playlist successfully downloaded")
+            return redirect(url_for('youtubeDownload'))
+
+        else:
+                return render_template("youtube/home.html")
+
+    else:
+        return render_template("youtube/home.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
