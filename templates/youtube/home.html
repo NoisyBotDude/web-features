@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/433788771e.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: whitesmoke;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background-color: whitesmoke;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        li {
+            float: left;
+            position: relative;
+            margin-right: 3%;
+            left: 55%;
+        }
+
+        li a {
+            display: block;
+            color: black;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 400;
+            padding: 14px 16px;
+        }
+
+        li a {
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: lightgrey;
+            background-position: initial;
+            border-radius: 10px;
+        }
+
+        .description {                                                                                                                               
+            display: block;                                                                               
+            float: left;
+            font-size: 18px;                                                                                  
+            position: relative;                                                                           
+            left: 8%;                                                                                    
+            top: 30vh;                                                                                    
+            max-width: 40%;  
+            z-index: -1;                                                                             
+        }
+        
+        .photo {
+            position: relative;
+            left: 20%;
+            top: 27vh;
+            z-index: -1;
+        }
+
+        .link {
+            position: relative;
+            left: 30%;
+            top: 45vh;
+        }
+
+        .form-input {
+            position: relative;
+            left: -2%;
+            display: block;
+            width: 35%;
+            height: 20px;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        .link button {
+            position: relative;
+            top: 30px;
+            font-size: 16px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">More</a></li>
+        </ul>
+    </div>
+    </div>
+    <div class="description">
+        <p> This is a just a basic webpage created to download youtube videos and playlists using links.
+            It can also be used to download the mp3 versions of that video.
+            This program is created using a module called pytube which is a free library for 
+            downloading Youtube Videos. You Can find more info about it here-: 
+            <a href="https://pypi.org/project/pytube/" target="_blank">https://pypi.org/project/pytube/</a>
+        </p>
+    </div>
+    <div class="photo">
+        <img src="/static/youtube/images/YouTube-Logo-700x394.png" width="30%" height="40%">
+    </div>
+    <div class="link">
+        <h2> Enter the link of the video here </h2>
+        <form action="" method="POST">
+            <input type="text" class="form-input" name="video_url" placeholder="Enter the link here">
+            <button type="submit" name="video_download" value="video_button" class="fa fa-download">  Download Video</button>
+            <button type="submit" name="audio_download" value="audio_button" class="fas fa-download"> Download Audio</button>
+        </form>
+        <br><br><br>
+        <h1 style="position: relative; left: 15%;"> OR </h1>
+        <h2> Enter the link of the playlist here </h2>
+        <form action="" method="POST">
+            <input type="text" class="form-input" name="playlist-url" placeholder="Enter the link here">
+            <button type="submit" name="playlist_download" value="playlist_button" class="fas fa-download"> Download Playlist</button>
+        </form>
+        <br><br>
+        <p> Note: The playlist should be public</p>
+    </div>
+</body>
+</html>
