@@ -18,7 +18,7 @@ class Video(Youtube):
         return self.yt.title
 
     def downloadVideo(self):
-        video = self.yt.streams.get_by_itag(136)
+        video = self.yt.streams.get_by_itag(22)
         return video.download()
 
 class PlayList(Youtube):
