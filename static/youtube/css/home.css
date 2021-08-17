@@ -1,0 +1,87 @@
+body {
+    background-color: whitesmoke;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: whitesmoke;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+li {
+    float: left;
+    position: relative;
+    margin-right: 3%;
+    left: 55%;
+}
+
+li a {
+    display: block;
+    color: black;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    padding: 14px 16px;
+}
+
+li a {
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: lightgrey;
+    background-position: initial;
+    border-radius: 10px;
+}
+
+.description {                                                                                                                               
+    display: block;                                                                               
+    float: left;
+    font-size: 18px;                                                                                  
+    position: relative;                                                                           
+    left: 8%;                                                                                    
+    top: 30vh; 
+    margin: 10px;                                                                                   
+    max-width: 40%;  
+    z-index: -1;                                                                             
+}
+
+.photo {
+    position: relative;
+    left: 20%;
+    top: 27vh;
+    z-index: -1;
+}
+
+.link {
+    position: relative;
+    left: 30%;
+    top: 45vh;
+}
+
+.form-input {
+    position: relative;
+    left: -2%;
+    display: block;
+    width: 35%;
+    height: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.link button {
+    position: relative;
+    top: 30px;
+    font-size: 16px;
+    margin-right: 50px;
+}
