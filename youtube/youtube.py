@@ -2,9 +2,6 @@ from pytube import YouTube
 from pytube import exceptions
 from pytube import Playlist
 
-# test_link = "https://www.youtube.com/watch?v=rUWxSEwctFU"
-
-
 class Youtube:
     def __init__(self, url):
         self.url = url
@@ -31,7 +28,7 @@ class PlayList(Youtube):
     
     def downloadPlaylist(self):
         for video in self.pl.videos:
-            video.streams.first().download()
+            video.streams.get_by_itag(22).download()
 
 class Audio(Youtube):
     def __init__(self, url):
@@ -44,11 +41,3 @@ class Audio(Youtube):
     def downloadAudio(self):
         audio = self.au.streams.get_by_itag(251)
         return audio.download()    
-    
-# youtube = Youtube("https://www.youtube.com/watch?v=rUWxSEwctFU")
-# playlist = PlayList(youtube.url)
-# print(playlist.getPlaylistTitle())
-# playlist.playlistDownload()
-# audio = Audio(youtube.url)
-# print(audio.getAudioTitle())
-# audio.downloadAudio()
