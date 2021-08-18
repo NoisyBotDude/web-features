@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for
-from flask import request
-from flask import flash
+from flask import request, flash
 import requests
 from weather.weather_cards import cities, current_temperature, status
 from weather.weather_cards import wind, humidity, feels_like
@@ -87,9 +86,9 @@ def youtubeDownload():
     if request.method == "POST":
         video_url = request.form.get('video_url')
         playlist_url = request.form.get('playlist_url')
-        youtube = Youtube(video_url)
 
         if video_url:
+            youtube = Youtube(video_url)
             if request.form.get("video_download"):
                 video = Video(youtube.url)
                 video.downloadVideo()
@@ -105,15 +104,19 @@ def youtubeDownload():
             else:
                 return render_template("youtube/home.html")
 
-        elif not playlist_url == "":
+        if playlist_url:
             youtube = Youtube(playlist_url)
-            playlist = PlayList(youtube.url)
-            playlist.downloadPlaylist()
-            flash("Playlist successfully downloaded")
-            return redirect(url_for('youtubeDownload'))
+            if request.form.get("playlist_download"):
+                playlist = PlayList(youtube.url)
+                playlist.downloadPlaylist()
+                # flash("Playlist successfully downloaded")
+                return redirect(url_for('youtubeDownload'))
+
+            else:
+                return render_template("youtube/home.html")
 
         else:
-                return render_template("youtube/home.html")
+            return render_template("youtube/home.html")
 
     else:
         return render_template("youtube/home.html")
